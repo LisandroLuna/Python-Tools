@@ -24,6 +24,6 @@ for news in data.findall('channel/item'):
     newsArr.append(newsObject)
 
 
-with open('./datafiles/newsData.json', 'w') as outfile:
+with open('./datafiles/newsData.json', 'w', encoding='utf8') as outfile:
     json.dump(newsArr, outfile)
 
