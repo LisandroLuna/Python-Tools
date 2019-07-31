@@ -6,13 +6,11 @@ import xml.etree.ElementTree as ET
 
 url = 'https://www.infobae.com/feeds/rss/'
 
-urllib.request.urlretrieve(url, './datafiles/data.xml')
+response = requests.get(url)
 
-e = ET.parse('./datafiles/data.xml')
+data = ET.fromstring(response.text)
 
-root = e.getroot()
-
-for news in root.findall('channel/item'):
+for news in data.findall('channel/item'):
     title = news.find('title').text
     desc = news.find('description').text
 
